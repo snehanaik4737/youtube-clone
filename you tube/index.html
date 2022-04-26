@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+
+  }
+  :focus{
+    outline:none;
+}
+body{
+    position:relative; 
+    background:#f0f0f0;
+     font-family: sans-serif;
+
+}
+.navbar{
+    position:fixed;
+    margin-top:0;
+    margin-left: 0;
+    width:100%;
+ height:60px;
+ background:#fff;
+ display:flex;
+ align-items: center;
+ padding: 0 25px;
+
+}
+
+.toggle{
+  width:20px;
+  height:10px; 
+  position: relative; 
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.toggle span{
+    position: absolute;
+    width:20px;
+    height:2px;
+    margin-top: 50%;
+    background: #979797;
+    transform: translate(-50%);
+}
+
+.toggle span:nth-child(1){
+    margin-top: 0;
+}
+.toggle span:nth-child(3){
+    margin-top: 100%;
+}
+.logo{
+
+height:40px;
+margin: 10px 30px 5px;
+
+}
+
+.search-box{
+    position: relative;
+    max-width:500px;
+    width:50%;
+    height:35px;
+    display:flex;
+}
+.search-bar{
+    width:85%;
+    height:100%;
+    border:2px solid #dbdbdb;
+    padding:0 20px;
+    font-size: 16px;
+}
+.search-btn{
+    width:15%;
+    height:100%;
+    background-color:#f0f0f0 ;
+    border:2px solid #dbdbdb;
+    padding:5px 0;
+    border-left:none;
+    
+}
+
+.search-btn img{
+
+    height:100%;
+}
+.options{
+    height:35px;
+    display:flex;
+    margin-left:auto;
+
+    align-items: center;
+   
+}
+
+.options .icons{
+    height:80%;
+    margin-right:20px;
+    cursor: pointer;
+    
+}
+.profile{
+    cursor: pointer;
+    height:30px;
+    width:30px;
+    border-radius: 50%;
+    overflow: hidden;
+   
+}
+.profile img{
+   width:100%;
+   height:100%;
+  object-fit: cover; 
+}
+
+.side-bars{
+
+position:fixed; 
+margin-top: 60px;
+margin-left: 0; 
+width:250px;
+height: calc(100vh - 60px);
+background:#fff;
+padding-right: 10px;
+}
+
+
+.links,.linkshome{
+    display:block;
+    width:100%;
+    padding:10px 20px;
+    display:flex;
+    align-items: center;
+    color: #242424;
+    font-size:20px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: 20px;
+
+}
+.linkshome{
+    width:88%;
+}
+.links img{
+    height:25px;
+    margin-right: 20px;
+}
+.linkshome img{
+    height:25px;
+    margin-right: 20px;
+}
+
+.links:hover{
+    background:lightgray ;
+    color: white;
+    width:90%
+}
+.linkshome{
+    background-color:lightgray;
+}
+
+.filters{
+position: fixed;
+margin-left:250px;
+margin-top:60px;
+width:calc(100% - -250px);
+height:60px;
+background: #fff;
+border-top: 1px solid #dbdbdb;
+border-bottom:1px solid #dbdbdb;
+padding:0 20px;
+display:flex;
+align-items: center;
+}
+.options-filter{
+    flex:0 0 auto;
+    padding:10px 20px;
+    border-radius: 50px;
+    background: #f0f0f0;
+    border:1px solid #dbdbdb;
+    margin-right: 10px;
+  
+    color:#242424;
+     font-size:15px;
+     cursor: pointer;
+     overflow-x: auto
+}
+.options-filter::-webkit-scrollbar{
+    display: none;
+}
+
+
+
+#vid-container{
+    width:calc(100%-250px);
+    /* margin-top:120px; */
+    margin-left: 250px;
+    padding:20px;
+    display:grid;
+    grid-template-columns: repeat(4,25%);
+    grid-gap:20px 10px;
+  
+    overflow-x: hidden;
+   /* background: #000; */
+ 
+
+    
+}
+.video{
+  min-height:250px;
+  margin-top: 120px;
+  height:auto;
+  /* border: 1px solid red; */
+
+
+ }
+ .video:hover{
+   background: #979797;
+ }
+.thumbnail{
+    width:100%;
+    height:150px;
+    object-fit: cover;
+}
+.content{
+    width:100%;
+    height:100px;
+    padding:10px;
+    display:flex;
+    justify-content: space-between;
+    
+}
+.channel-icon{
+    width:40px;
+    height:40px;
+    border-radius:50% ;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+
+.title{
+    width:90%;
+    height:40px;
+    overflow: hidden;
+    /* padding-right:10px; */
+
+}
+.channel-name{
+    font-size: 14px;
+    margin:2px 0;
+    color:#979797;
+    
+} 
+#vid-container>.video{
+    margin-bottom: -100px;
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="navbar">
+
+        <div class="toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <img src="./youtube-logo-png.png"  class="logo" alt="">
+      
+        <div class="search-box">
+            <input type="text" class="search-bar" placeholder="search">
+            <button class="search-btn">
+                <img src="search.png" alt="">
+            </button>
+        </div>
+        <div class="options">
+            <img src="./video icon.png" alt="" class="icons">
+            <img src="./grid.png" alt="" class="icons">
+            <img src="./bell.png" alt="" class="icons">
+        
+            <div class="profile">
+                <img src="./profile.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="side-bars">
+
+        <a href="#" class="linkshome"><img src="./home.png" alt="">home</a>
+        <a href="#" class="links"><img src="./explore.png" alt="">explore</a>
+        <a href="#" class="links"><img src="./suscription.png" alt="">subscription</a>
+        
+    
+        <a href="#" class="links"><img src="./library.png" alt="">library</a>
+        <!-- <a href="#" class="links"><img src="./explore.png" alt=""></a> -->
+        <!-- <a href="#" class="links"><img src="./suscription.png" alt="">subscription</a> -->
+    </div>
+    
+    <div class="filters">
+        <button class="options-filter">All</button>
+        <button class="options-filter">CSS</button>
+        <button class="options-filter">APIs</button>
+        <button class="options-filter">Computer program</button>
+        <button class="options-filter">Civil Services Exams</button>
+        <button class="options-filter">Web series</button>
+        <button class="options-filter">Acoustic guitar</button>
+        <button class="options-filter">Music</button>
+        <!-- <button class="options-filter">History</button> -->
+        <!-- <button class="options-filter">News</button> -->
+    </div>
+    
+    
+
+
+    <div id="vid-container">
+      
+    </div>
+
+</body>
+</html>
+<script>
+    let api_key=" AIzaSyB7AKnwgBPnk3SipQ30HtjwlEZUd8768yA";
+ 
+ let video_container =document.getElementById("vid-container");
+ let getData = async()=>{
+     try{
+ 
+         let res= await fetch(` https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&regionCode=IN&key=${api_key}`);
+          data= await res.json();
+           console.log("data", data);
+    
+      make_card(data.items);
+ 
+     }
+     catch(err){
+         console.log(err);
+ 
+     }
+ 
+ }
+ getData();
+ 
+
+
+
+let  make_card = (data)=>{
+   video_container.innerHTML="";
+
+data.map(function(elem){
+   var div1= document.createElement("div");
+   div1.setAttribute("class","video");
+   div1.onclick="window.location.href=`https://youtube.com/watch?v=${elem.id}`"
+
+   div1.addEventListener("click",function(){
+    window.location.href=`https://youtube.com/watch?v=${elem.id}`
+ })
+
+
+
+   var img1=document.createElement("img");
+   img1.setAttribute("class","thumbnail");
+   img1.src=elem.snippet.thumbnails.high.url;
+
+
+
+    var div3 =document.createElement("div");
+    div3.setAttribute("class","info");
+
+    var para = document.createElement("h4");
+    para.setAttribute("class","title");
+    para.textContent=elem.snippet.title;
+
+
+    var part= document.createElement("p");
+    part.setAttribute("class","channel-name");
+   
+    part.textContent=elem.snippet.channelTitle;
+
+    div3.append(para,part);
+
+    div1.append(img1,div3); 
+
+
+   document.getElementById("vid-container").append(div1);
+    
+})
+}
+   
+  const searchInput=document.querySelector(".search-bar"); 
+
+  const searchBtn=document.querySelector(".search-btn");
+
+  let searchLink="https://www.youtube.com/results?search_query=";
+
+  searchBtn.addEventListener("click",()=>{
+      
+ if( searchInput.value.length){
+     window.location.href= searchLink+searchInput.value;
+ }
+
+ })
+
+</script>
